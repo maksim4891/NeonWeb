@@ -1,0 +1,520 @@
+!DOCTYPE html
+html lang=ru
+head
+    meta charset=UTF-8
+    meta name=viewport content=width=device-width, initial-scale=1.0
+    titleNeonWeb - Создание сайтов и дизайнtitle
+    link rel=stylesheet href=httpscdnjs.cloudflare.comajaxlibsfont-awesome6.4.0cssall.min.css
+    style
+         {
+            margin 0;
+            padding 0;
+            box-sizing border-box;
+            font-family 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color #fff;
+            color #333;
+            line-height 1.6;
+            overflow-x hidden;
+        }
+
+        header {
+            background linear-gradient(135deg, #6e8efb, #a777e3);
+            color white;
+            padding 20px 0;
+            position fixed;
+            width 100%;
+            top 0;
+            z-index 1000;
+            box-shadow 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width 90%;
+            max-width 1200px;
+            margin 0 auto;
+        }
+
+        .header-content {
+            display flex;
+            justify-content space-between;
+            align-items center;
+        }
+
+        .logo {
+            font-size 28px;
+            font-weight 700;
+            animation pulse 2s infinite;
+        }
+
+        .logo span {
+            color #ff7ae5;
+        }
+
+        nav ul {
+            display flex;
+            list-style none;
+        }
+
+        nav ul li {
+            margin-left 25px;
+        }
+
+        nav ul li a {
+            color white;
+            text-decoration none;
+            font-weight 500;
+            transition all 0.3s ease;
+            position relative;
+        }
+
+        nav ul li aafter {
+            content '';
+            position absolute;
+            width 0;
+            height 2px;
+            background #ff7ae5;
+            left 0;
+            bottom -5px;
+            transition width 0.3s ease;
+        }
+
+        nav ul li ahoverafter {
+            width 100%;
+        }
+
+        .hero {
+            padding 160px 0 100px;
+            text-align center;
+            background url('dataimagesvg+xml;utf8,svg xmlns=httpwww.w3.org2000svg width=100 height=100 viewBox=0 0 100 100rect width=100 height=100 fill=whitepath d=M0 0L100 100 stroke=rgba(167, 119, 227, 0.1) stroke-width=1path d=M100 0L0 100 stroke=rgba(167, 119, 227, 0.1) stroke-width=1svg');
+            background-size 30px;
+        }
+
+        .hero h1 {
+            font-size 48px;
+            margin-bottom 20px;
+            color #333;
+            animation fadeInDown 1s ease;
+        }
+
+        .hero p {
+            font-size 20px;
+            max-width 700px;
+            margin 0 auto 30px;
+            color #555;
+            animation fadeInUp 1s ease;
+        }
+
+        .btn {
+            display inline-block;
+            background linear-gradient(135deg, #6e8efb, #a777e3);
+            color white;
+            padding 14px 30px;
+            border-radius 30px;
+            text-decoration none;
+            font-weight 600;
+            transition all 0.3s ease;
+            box-shadow 0 4px 15px rgba(110, 142, 251, 0.3);
+            animation pulse 2s infinite;
+        }
+
+        .btnhover {
+            transform translateY(-3px);
+            box-shadow 0 6px 20px rgba(110, 142, 251, 0.4);
+        }
+
+        section {
+            padding 80px 0;
+        }
+
+        h2 {
+            text-align center;
+            font-size 36px;
+            margin-bottom 50px;
+            color #333;
+            position relative;
+        }
+
+        h2after {
+            content '';
+            position absolute;
+            width 80px;
+            height 4px;
+            background linear-gradient(135deg, #6e8efb, #a777e3);
+            bottom -15px;
+            left 50%;
+            transform translateX(-50%);
+            border-radius 2px;
+        }
+
+        .services {
+            background-color #f9f9f9;
+        }
+
+        .services-grid {
+            display grid;
+            grid-template-columns repeat(auto-fit, minmax(300px, 1fr));
+            gap 30px;
+        }
+
+        .service-card {
+            background white;
+            padding 30px;
+            border-radius 15px;
+            box-shadow 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition all 0.3s ease;
+            text-align center;
+            opacity 0;
+            transform translateY(20px);
+        }
+
+        .service-card.show {
+            opacity 1;
+            transform translateY(0);
+        }
+
+        .service-cardhover {
+            transform translateY(-10px);
+            box-shadow 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size 50px;
+            margin-bottom 20px;
+            background linear-gradient(135deg, #6e8efb, #a777e3);
+            -webkit-background-clip text;
+            -webkit-text-fill-color transparent;
+        }
+
+        .service-card h3 {
+            font-size 22px;
+            margin-bottom 15px;
+            color #333;
+        }
+
+        .reviews {
+            background white;
+        }
+
+        .reviews-grid {
+            display grid;
+            grid-template-columns repeat(auto-fit, minmax(300px, 1fr));
+            gap 30px;
+        }
+
+        .review-card {
+            background #f9f9f9;
+            padding 25px;
+            border-radius 15px;
+            box-shadow 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition all 0.3s ease;
+            opacity 0;
+            transform translateY(20px);
+        }
+
+        .review-card.show {
+            opacity 1;
+            transform translateY(0);
+        }
+
+        .review-cardhover {
+            transform translateY(-5px);
+            box-shadow 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-header {
+            display flex;
+            align-items center;
+            margin-bottom 15px;
+        }
+
+        .review-avatar {
+            width 50px;
+            height 50px;
+            border-radius 50%;
+            background linear-gradient(135deg, #6e8efb, #a777e3);
+            display flex;
+            align-items center;
+            justify-content center;
+            color white;
+            font-weight bold;
+            font-size 20px;
+            margin-right 15px;
+        }
+
+        .review-name {
+            font-weight 600;
+            font-size 18px;
+        }
+
+        .review-type {
+            font-size 14px;
+            color #777;
+        }
+
+        .review-text {
+            font-style italic;
+            color #555;
+        }
+
+        .contact {
+            background linear-gradient(135deg, #6e8efb, #a777e3);
+            color white;
+            text-align center;
+            padding 100px 0;
+        }
+
+        .contact h2 {
+            color white;
+        }
+
+        .contact h2after {
+            background white;
+        }
+
+        .contact p {
+            max-width 700px;
+            margin 0 auto 40px;
+            font-size 18px;
+        }
+
+        .contact-links {
+            display flex;
+            justify-content center;
+            gap 30px;
+            flex-wrap wrap;
+        }
+
+        .contact-link {
+            display flex;
+            align-items center;
+            background white;
+            color #6e8efb;
+            padding 15px 30px;
+            border-radius 30px;
+            text-decoration none;
+            font-weight 600;
+            transition all 0.3s ease;
+            box-shadow 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-linkhover {
+            transform translateY(-5px);
+            box-shadow 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-link i {
+            margin-right 10px;
+            font-size 20px;
+        }
+
+        footer {
+            background #333;
+            color white;
+            text-align center;
+            padding 30px 0;
+            font-size 16px;
+        }
+
+         Анимации 
+        @keyframes pulse {
+            0% { transform scale(1); }
+            50% { transform scale(1.05); }
+            100% { transform scale(1); }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity 0;
+                transform translateY(-20px);
+            }
+            to {
+                opacity 1;
+                transform translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity 0;
+                transform translateY(20px);
+            }
+            to {
+                opacity 1;
+                transform translateY(0);
+            }
+        }
+
+         Адаптивность 
+        @media (max-width 768px) {
+            .header-content {
+                flex-direction column;
+                text-align center;
+            }
+            
+            nav ul {
+                margin-top 20px;
+                justify-content center;
+            }
+            
+            nav ul li {
+                margin 0 10px;
+            }
+            
+            .hero h1 {
+                font-size 36px;
+            }
+            
+            .hero p {
+                font-size 18px;
+            }
+            
+            .contact-links {
+                flex-direction column;
+                align-items center;
+            }
+        }
+    style
+head
+body
+    header
+        div class=container
+            div class=header-content
+                div class=logoNeonspanWebspandiv
+                nav
+                    ul
+                        lia href=#servicesУслугиali
+                        lia href=#reviewsОтзывыali
+                        lia href=#contactКонтактыali
+                    ul
+                nav
+            div
+        div
+    header
+
+    section class=hero
+        div class=container
+            h1Профессиональное создание сайтов и дизайнh1
+            pМы создаем современные и эффективные веб-решения для вашего бизнеса. От лендингов до интернет-магазинов.p
+            a href=#contact class=btnЗаказать сайтa
+        div
+    section
+
+    section id=services class=services
+        div class=container
+            h2Наши услугиh2
+            div class=services-grid
+                div class=service-card
+                    div class=service-icon
+                        i class=fas fa-laptop-codei
+                    div
+                    h3Разработка сайтовh3
+                    pСоздаем сайты любой сложности от визиток до крупных интернет-магазинов с индивидуальным дизайном.p
+                div
+                div class=service-card
+                    div class=service-icon
+                        i class=fas fa-paint-brushi
+                    div
+                    h3Веб-дизайнh3
+                    pРазрабатываем уникальный, современный и удобный дизайн, который выделит ваш сайт среди конкурентов.p
+                div
+                div class=service-card
+                    div class=service-icon
+                        i class=fas fa-mobile-alti
+                    div
+                    h3Адаптивная версткаh3
+                    pСайты идеально отображаются на всех устройствах компьютерах, планшетах и smartphones.p
+                div
+            div
+        div
+    section
+
+    section id=reviews class=reviews
+        div class=container
+            h2Отзывы клиентовh2
+            div class=reviews-grid
+                div class=review-card
+                    div class=review-header
+                        div class=review-avatarМdiv
+                        div
+                            div class=review-nameМария Ивановаdiv
+                            div class=review-typeТоварный бизнесdiv
+                        div
+                    div
+                    p class=review-textЗаказала сайт для своего интернет-магазина товаров для дома. Осталась очень довольна! Сайт modern, удобный, а главное - продающий. За месяц окупил все затраты на разработку!p
+                div
+                div class=review-card
+                    div class=review-header
+                        div class=review-avatarАdiv
+                        div
+                            div class=review-nameАлександр Петровdiv
+                            div class=review-typeМагазин электроникиdiv
+                        div
+                    div
+                    p class=review-textСделали отличный интернет-магазин для нашей сети по продаже электроники. Удобная система управления, красивый дизайн, все продумано до мелочей. Рекомендую!p
+                div
+                div class=review-card
+                    div class=review-header
+                        div class=review-avatarЕdiv
+                        div
+                            div class=review-nameЕкатерина Смирноваdiv
+                            div class=review-typeУслуги красотыdiv
+                        div
+                    div
+                    p class=review-textНужен был сайт для салона красоты. Сделали быстро, качественно, учли все пожелания. Клиенты отмечают удобство онлайн-записи и красивый дизайн. Спасибо!p
+                div
+            div
+        div
+    section
+
+    section id=contact class=contact
+        div class=container
+            h2Свяжитесь с намиh2
+            pГотовы создать сайт для вашего бизнеса Напишите нам в удобный мессенджерp
+            div class=contact-links
+                a href=httpst.meNeonWebRU class=contact-link target=_blank
+                    i class=fab fa-telegrami Telegram @NeonWebRU
+                a
+                a href=httpswww.avito.rubrands632e6bb4c37fc695507e8f8dbda2b0adsrc=sharing class=contact-link target=_blank
+                    i class=fas fa-storei Наш Авито
+                a
+            div
+        div
+    section
+
+    footer
+        div class=container
+            p© 2023 NeonWeb - Создание сайтов и дизайн. Все права защищены.p
+        div
+    footer
+
+    script
+         Анимация появления элементов при скролле
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            const reviewCards = document.querySelectorAll('.review-card');
+            
+            function checkVisibility() {
+                serviceCards.forEach(card = {
+                    const position = card.getBoundingClientRect();
+                    if (position.top  window.innerHeight - 100) {
+                        card.classList.add('show');
+                    }
+                });
+                
+                reviewCards.forEach(card = {
+                    const position = card.getBoundingClientRect();
+                    if (position.top  window.innerHeight - 100) {
+                        card.classList.add('show');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', checkVisibility);
+            checkVisibility();  Проверить при загрузке
+        });
+    script
+body
+html
